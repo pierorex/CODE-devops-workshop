@@ -15,7 +15,7 @@ pipeline {
         // Run the Unit Tests
         sh 'py.test app/tests/unit -v --junitprefix=linux --junitxml unit_results.xml || true'
         // Start web app
-        sh 'docker container rm --force flask-calculator-app || true'
+        sh 'docker container rm --force test || true'
         sh 'docker build -t test .'
         sh 'docker run -p 5001:5000 -d --name test test'
         // Run the Integration Tests
