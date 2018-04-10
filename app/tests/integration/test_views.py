@@ -15,5 +15,5 @@ class ViewTests(TestCase):
         pass
 
     def test_invalid_http_request(self):
-        response = self.client.get('/calc/10/0')
+        response = self.client.get('/calc/10/10000')
         self.assertEqual(response.status_code, '403')
