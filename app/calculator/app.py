@@ -3,7 +3,7 @@
 from flask import Flask, render_template
 from logic import Calculator
 
-from calculator.logic import ValueTooLowException, ValueTooHighException
+from logic import ValueTooLowException, ValueTooHighException
 
 app = Flask(__name__)
 
