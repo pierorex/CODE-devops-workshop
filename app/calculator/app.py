@@ -3,13 +3,20 @@
 from flask import Flask, render_template
 from logic import Calculator
 
+from calculator.logic import ValueTooLowException, ValueTooHighException
+
 app = Flask(__name__)
 
 
 @app.route("/calc/<a>*<b>")
 def multiply(a, b):
     c = Calculator()
-    result = c.mul(int(a), int(b))
+    try:
+        result = c.mul(int(a), int(b))
+    except ValueTooLowException:
+        return 'Value too low', 403
+    except ValueTooHighException:
+        return 'Value too high', 403
     return str(result)
 
 
@@ -20,6 +27,10 @@ def divide(a, b):
         result = c.div(int(a), int(b))
     except ZeroDivisionError:
         return 'Division by 0', 403
+    except ValueTooLowException:
+        return 'Value too low', 403
+    except ValueTooHighException:
+        return 'Value too high', 403
     return str(result)
 
 

@@ -12,10 +12,9 @@ class ViewTests(TestCase):
         response = self.client.get('calc/3*10')
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.body, '30')
-        pass
 
     def test_division_by_zero(self):
-        response = self.client.get('/calc/10/10000')
+        response = self.client.get('/calc/10/0')
         self.assertEqual(response.status_code, '403')
 
     def test_too_high_number(self):
