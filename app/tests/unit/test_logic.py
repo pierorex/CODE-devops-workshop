@@ -1,7 +1,5 @@
 from unittest import TestCase
 
-import requests
-
 from calculator.app import app
 from calculator.logic import Calculator
 
