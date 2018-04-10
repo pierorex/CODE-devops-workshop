@@ -13,6 +13,10 @@ class CalculatorTests(TestCase):
         self.assertEqual(calc.mul(100, 10), 1000)
         self.assertEqual(calc.mul(1, 1), 1)
 
+    def test_mul_boundaries(self):
+        calc = Calculator(-100, 100)
+        self.assertRaises(ValueTooLowException, lambda: calc.div(-101, 1))
+
     def test_valid(self):
         calc = Calculator(-100000, 100000)
         self.assertRaises(ValueTooLowException, lambda: calc.div(-100000000000, 1))
