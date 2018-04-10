@@ -19,7 +19,7 @@ pipeline {
         sh 'docker build -t test .'
         sh 'docker run -p 5001:5000 -d --name test test'
         // Run the Integration Tests
-        sh 'docker exec test py.test app/tests/integration -v --junitprefix=linux --junitxml integration_results.xml || true'
+        sh 'docker exec ls; test py.test app/tests/integration -v --junitprefix=linux --junitxml integration_results.xml || true'
       }
       post {
         // Parse the test results so they appear in BlueOcean UI
