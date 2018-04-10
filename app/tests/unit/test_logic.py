@@ -1,7 +1,7 @@
 from unittest import TestCase
-from app.calculator.logic import Calculator
+from calculator.logic import Calculator
 
-from app.calculator.logic import ValueTooLowException, ValueTooHighException
+from calculator.logic import ValueTooLowException, ValueTooHighException
 
 
 class CalculatorTests(TestCase):
