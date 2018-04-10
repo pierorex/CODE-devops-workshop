@@ -14,8 +14,17 @@ class Calculator(object):
         self.min_value = min_value
         self.max_value = max_value
 
+    def valid(self, a, b):
+        if a < self.min_value or b < self.min_value:
+            raise ValueTooLowException
+        if a > self.max_value or b > self.max_value:
+            raise ValueTooHighException
+        return True
+
     def mul(self, a, b):
-        pass
+        if self.valid(a, b):
+            return a * b
 
     def div(self, a, b):
-        pass
+        if self.valid(a, b):
+            return a / b
