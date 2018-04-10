@@ -9,7 +9,11 @@ class ViewTests(TestCase):
         self.client = TestClient(app)
 
     def test_multiply(self):
-        # r = self.client.get("/calc/3*10")
-        # self.assertEquals(r.status_code, 200)
-        # self.assertEquals(r.body, "30")
+        response = self.client.get('calc/3*10')
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.body, '30')
         pass
+
+    def test_invalid_http_request(self):
+        response = self.client.get('/calc/10/0')
+        self.assertEqual(response.status_code, '403')

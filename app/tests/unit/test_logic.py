@@ -19,7 +19,8 @@ class CalculatorTests(TestCase):
         calc = Calculator(-100, 100)
         self.assertRaises(ValueTooLowException, lambda: calc.div(-101, 1))
         self.assertRaises(ValueTooHighException, lambda: calc.mul(101, 1))
-
+        self.assertEqual(calc.div(-100, 1), -100)
+        self.assertEqual(calc.mul(101, 1), 101)
 
     def test_valid(self):
         calc = Calculator(-100000, 100000)
@@ -35,8 +36,3 @@ class CalculatorTests(TestCase):
         self.assertEqual(calc.div(100, 10), 10)
         self.assertEqual(calc.div(1, 1), 1)
         self.assertRaises(ZeroDivisionError, lambda: calc.div(1, 0))
-
-    def test_invalid_http_request(self):
-        self.app = app.test_client()
-        response = self.app.get('/calc/10/0')
-        self.assertEqual(response.status_code, '403')
