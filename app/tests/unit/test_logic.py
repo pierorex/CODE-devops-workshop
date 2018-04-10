@@ -21,6 +21,7 @@ class CalculatorTests(TestCase):
         self.assertRaises(ValueTooLowException, lambda: calc.div(-101, 1))
         self.assertRaises(ValueTooHighException, lambda: calc.mul(101, 1))
 
+
     def test_valid(self):
         calc = Calculator(-100000, 100000)
         self.assertRaises(ValueTooLowException, lambda: calc.div(-100000000000, 1))
