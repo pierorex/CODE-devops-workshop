@@ -16,7 +16,7 @@ class CalculatorTests(TestCase):
     def test_boundaries(self):
         calc = Calculator(-100, 100)
         self.assertRaises(ValueTooLowException, lambda: calc.div(-101, 1))
-        self.assertRaises(ValueTooLowException, lambda: calc.mul(101, 1))
+        self.assertRaises(ValueTooHighException, lambda: calc.mul(101, 1))
 
     def test_valid(self):
         calc = Calculator(-100000, 100000)
