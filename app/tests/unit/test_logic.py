@@ -24,6 +24,6 @@ class CalculatorTests(TestCase):
         calc = Calculator(-100000, 100000)
         self.assertEqual(calc.div(1, 1), 1)
         self.assertEqual(calc.div(0, 1), 0)
-        self.assertEqual(calc.div(100, 10), 1000)
+        self.assertEqual(calc.div(100, 10), 10)
         self.assertEqual(calc.div(1, 1), 1)
         self.assertRaises(ZeroDivisionError, lambda: calc.div(1, 0))
