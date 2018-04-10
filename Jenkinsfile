@@ -7,20 +7,15 @@ pipeline {
     stage ('Run Unit & Integration Tests') {
       // For this stage, tell Jenkins to build the agent form the dockerfile
 
-      //agent {
-      //  dockerfile true
-      //}
+      agent {
+        dockerfile true
+      }
 
       steps {
         // Run the Unit Tests
         sh 'py.test app/tests/unit -v --junitprefix=linux --junitxml unit_results.xml || true'
-        // Start web app
-        sh 'docker container rm --force test || true'
-        sh 'docker build -t test .'
-        sh 'docker run -p 5001:5000 -d --name test test'
         // Run the Integration Tests
-        sh 'docker exec test "curl 127.0.0.1:5000/calc/1000*9'
-        //; py.test app/tests/integration -v --junitprefix=linux --junitxml integration_results.xml" || true'
+        sh 'py.test app/tests/integration -v --junitprefix=linux --junitxml integration_results.xml || true'
       }
       post {
         // Parse the test results so they appear in BlueOcean UI

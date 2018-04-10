@@ -2,6 +2,7 @@ from unittest import TestCase
 
 import requests
 
+from calculator.app import app
 from calculator.logic import Calculator
 
 from calculator.logic import ValueTooLowException, ValueTooHighException
@@ -38,5 +39,6 @@ class CalculatorTests(TestCase):
         self.assertRaises(ZeroDivisionError, lambda: calc.div(1, 0))
 
     def test_invalid_http_request(self):
-        response = requests.get('http://localhost:5000/app/10/0')
+        self.app = app.test_client()
+        response = self.app.get('/calc/10/0')
         self.assertEqual(response.status_code, '403')
