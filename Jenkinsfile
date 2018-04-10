@@ -19,7 +19,7 @@ pipeline {
         sh 'docker build -t test .'
         sh 'docker run -p 5001:5000 -d --name test test'
         // Run the Integration Tests
-        sh 'docker exec test ls'
+        sh 'docker exec test "curl 127.0.0.1:5000/calc/1000*9'
         //; py.test app/tests/integration -v --junitprefix=linux --junitxml integration_results.xml" || true'
       }
       post {
