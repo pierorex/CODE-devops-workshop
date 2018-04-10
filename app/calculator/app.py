@@ -16,7 +16,10 @@ def multiply(a, b):
 @app.route("/calc/<a>/<b>")
 def divide(a, b):
     c = Calculator()
-    result = c.div(int(a), int(b))
+    try:
+        result = c.div(int(a), int(b))
+    except ZeroDivisionError:
+        return 'Division by 0', 403
     return str(result)
 
 

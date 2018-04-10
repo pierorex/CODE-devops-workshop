@@ -14,6 +14,14 @@ class ViewTests(TestCase):
         self.assertEquals(response.body, '30')
         pass
 
-    def test_invalid_http_request(self):
+    def test_division_by_zero(self):
         response = self.client.get('/calc/10/10000')
+        self.assertEqual(response.status_code, '403')
+
+    def test_too_high_number(self):
+        response = self.client.get('/calc/10/10000')
+        self.assertEqual(response.status_code, '403')
+
+    def test_too_low_number(self):
+        response = self.client.get('/calc/-10000*10')
         self.assertEqual(response.status_code, '403')
