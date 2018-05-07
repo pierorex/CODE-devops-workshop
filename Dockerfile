@@ -1,4 +1,4 @@
-FROM python:2
+FROM python:3
 # Install the required python packages 
 COPY app/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
