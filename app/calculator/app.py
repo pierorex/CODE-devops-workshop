@@ -1,8 +1,8 @@
 # encoding=utf-8
 
 from flask import Flask, render_template
-from calculator.logic import Calculator
-from calculator.logic import ValueTooLowException, ValueTooHighException
+from logic import Calculator
+from logic import ValueTooLowException, ValueTooHighException
 
 app = Flask(__name__)
 
