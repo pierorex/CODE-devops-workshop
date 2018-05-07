@@ -1,6 +1,6 @@
 from unittest import TestCase
 from ..base import TestClient
-from calculator.app import app
+from app import app
 
 
 class ViewTests(TestCase):
