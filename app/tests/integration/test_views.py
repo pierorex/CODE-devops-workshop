@@ -11,7 +11,7 @@ class ViewTests(TestCase):
     def test_multiply(self):
         response = self.client.get('calc/3*10')
         self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.body, '30')
+        self.assertEquals(response.body, b'30')
 
     def test_division_by_zero(self):
         response = self.client.get('/calc/10/0')
