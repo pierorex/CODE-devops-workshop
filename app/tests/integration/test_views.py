@@ -27,4 +27,4 @@ class ViewTests(TestCase):
 
     def test_nan(self):
         response = self.client.get('/calc/this-is-nan')
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)

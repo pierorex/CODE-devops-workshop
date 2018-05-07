@@ -7,4 +7,3 @@ WORKDIR /app/
 COPY app/ .
 # Start the calculator app when you run this container
 CMD ["python", "calculator/app.py"]
-
