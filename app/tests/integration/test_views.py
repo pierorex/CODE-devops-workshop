@@ -24,3 +24,7 @@ class ViewTests(TestCase):
     def test_too_low_number(self):
         response = self.client.get('/calc/-10000*10')
         self.assertEqual(response.status_code, 403)
+
+    def test_nan(self):
+        response = self.client.get('/calc/this-is-nan')
+        self.assertEqual(response.status_code, 403)
